@@ -1,11 +1,8 @@
 {
   "in": {
-    "txt": {
+    "json": {
       "transformers": {
-        "name": ".",
-        "options": {
-          "errorText": "error"
-        }
+        "name": "."
       }
     }
   }
