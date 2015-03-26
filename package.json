@@ -1,6 +1,6 @@
 {
   "name": "cogs-transformer-json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Casey Foster <c@sey.me>",
   "description": "A JSON transformer for Cogs.",
   "license": "MIT",
