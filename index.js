@@ -6,13 +6,15 @@ const DEFAULTS = {
 };
 
 module.exports = (file, options, cb) => {
-  const source = file.buffer.toString();
+  try {
+    const source = file.buffer.toString();
 
-  // Validate JSON.
-  try { JSON.parse(source); } catch (er) { return cb(er); }
+    // Validate JSON.
+    JSON.parse(source);
 
-  options = _.extend({}, DEFAULTS, options);
-  cb(null, {
-    buffer: new Buffer(options.before + source.trim() + options.after)
-  });
+    options = _.extend({}, DEFAULTS, options);
+    cb(null, {
+      buffer: new Buffer(options.before + source.trim() + options.after)
+    });
+  } catch (er) { return cb(er); }
 };
