@@ -1,9 +1,3 @@
 {
-  "in": {
-    "json": {
-      "transformers": {
-        "name": "."
-      }
-    }
-  }
+  "pipe": [{"name": ".", "only": "**/*.json"}]
 }
