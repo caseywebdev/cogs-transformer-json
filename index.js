@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('underscore');
 
 const DEFAULTS = {
@@ -7,14 +5,11 @@ const DEFAULTS = {
   after: ';\n'
 };
 
-module.exports = (file, options, cb) => {
-  try {
-    let source = file.buffer.toString();
+module.exports = ({file: {buffer}, options}) => {
+  let source = buffer.toString();
 
-    // Validate JSON.
-    JSON.parse(source);
-    options = _.extend({}, DEFAULTS, options);
-    source = options.before + source.trim() + options.after;
-    cb(null, {buffer: new Buffer(source)});
-  } catch (er) { return cb(er); }
+  // Validate JSON.
+  JSON.parse(source);
+  const {before, after} = _.extend({}, DEFAULTS, options);
+  return {buffer: Buffer.from(before + source.trim() + after)};
 };
